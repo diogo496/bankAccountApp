@@ -8,12 +8,13 @@ package bankAccountApp;
 public abstract class Account implements IBaseRate{
 
     // list common properties for savings and checking accounts
-    String name;
-    String sSN;
-    double balance;
-    double rate;
-    String accountNumber;
-    static int index = 10000;
+    private String name;
+    private String sSN;
+    private double balance;
+    // protected means its accessible in the same package and subclasses
+    protected double rate;
+    protected String accountNumber;
+    private static int index = 10000;
 
 
     // constructor to set base properties and initialize the account
@@ -32,6 +33,17 @@ public abstract class Account implements IBaseRate{
         int uniqueID = index;
         int randomNumber = (int) (Math.random() * Math.pow(10,3));
         return lastTwoOfSSN + uniqueID + randomNumber;
+    }
+
+    public void compound(){
+        double accruedInterest = balance * (rate/100);
+        balance = balance + accruedInterest;
+        System.out.println(
+                "Accrued interest: "
+                + accruedInterest
+        );
+        printBalance();
+
     }
 
     // checking and savings have to implement this method
