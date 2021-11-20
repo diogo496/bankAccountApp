@@ -53,7 +53,7 @@ public abstract class Account implements IBaseRate{
 
     public void transfer(String destiny, double amount){
         balance = balance - amount;
-        System.out.println("Transfering $"+amount+" to "+destiny);
+        System.out.println(" Transfering $"+amount+" to "+destiny);
         printBalance();
     }
 
